@@ -107,8 +107,19 @@ class LinkedList {
         l.print();
         //System.out.println(l.get(4));
         System.out.println("-----------------------");
+        /*
         l.remove(2);
         l.print();
+        System.out.println("-----------------------");
+        */
+        Node fast = l.head;
+        Node slow = l.head;
+
+        while(fast != null && fast.getNext() != null){
+            fast = fast.getNext().getNext();
+            slow = slow.getNext();
+        }
+        System.out.println(slow.getData());
 
     }
 }
