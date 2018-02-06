@@ -8,20 +8,17 @@ import java.util.Arrays;
 
 class Node{
     Node next;
-    Object data;
+    int data;
 
-    public Node(Object data){
+    public Node(int data){
         this.next = null;
         this.data = data;
     }
 
-    public Object getData() {
+    public int getData() {
         return data;
     }
 
-    public void setData(Object data) {
-        this.data = data;
-    }
 
     public Node getNext() {
         return next;
@@ -95,6 +92,20 @@ class LinkedList {
         }
     }
 
+    public void reverse(){
+        Node currNode = head;
+        Node nextNode = null;
+        Node prevNode = null;
+
+        while(currNode!=null){
+            nextNode = currNode.next;
+            currNode.next = prevNode;
+            prevNode = currNode;
+            currNode = nextNode;
+        }
+        head = prevNode;
+    }
+
 
     public static void main( String[] args ) {
 
@@ -103,7 +114,7 @@ class LinkedList {
         l.add(2);
         l.add(3);
         l.add(4);
-        l.add(5);
+        //l.add(5);
         l.print();
         //System.out.println(l.get(4));
         System.out.println("-----------------------");
@@ -112,6 +123,11 @@ class LinkedList {
         l.print();
         System.out.println("-----------------------");
         */
+
+        l.reverse();
+        l.print();
+
+        System.out.println("Middle Element");
         Node fast = l.head;
         Node slow = l.head;
 
@@ -120,6 +136,9 @@ class LinkedList {
             slow = slow.getNext();
         }
         System.out.println(slow.getData());
+
+
+
 
     }
 }
